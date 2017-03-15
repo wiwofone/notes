@@ -18,11 +18,11 @@ technologies as the project grows (with varying success 😂).
 
 ## Todo
 
-- [] Add a real editor (perhaps MediumEditor?)
-- [] Design components (for real)
-- [] Authentication (Google OAuth?)
-- [] Persist the state in something else than localStorage (after authentication obviously, Firebase maybe?)
-- [] Testing
+- [ ] Add a real editor (perhaps MediumEditor?)
+- [ ] Design components (for real)
+- [ ] Authentication (Google OAuth?)
+- [ ] Persist the state in something else than localStorage (after authentication obviously, Firebase maybe?)
+- [ ] Testing
 
 ## Tools/technologies/concepts to check out:
 * Server-side rendering
