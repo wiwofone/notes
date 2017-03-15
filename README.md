@@ -23,6 +23,7 @@ technologies as the project grows (with varying success 😂).
 - [ ] Authentication (Google OAuth?)
 - [ ] Persist the state in something else than localStorage (after authentication obviously, Firebase maybe?)
 - [ ] Testing
+- [ ] Move theme variables (fonts, colors) to separate module
 
 ## Tools/technologies/concepts to check out:
 * Server-side rendering
