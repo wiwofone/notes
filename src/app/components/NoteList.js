@@ -9,7 +9,7 @@ const propTypes = {
 
 const styles = StyleSheet.create({
   list: {
-    background: '#bbb',
+    background: 'transparent',
     flex: '1',
     overflowX: 'scroll',
   },

@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
+import { NEW_NOTE_DEFAULT_EXCERPT } from '../defaults';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -12,11 +13,12 @@ const propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    background: '#ccc',
+    background: 'transparent',
     padding: '15px 20px',
-    borderBottom: '1px solid #000',
-    fontFamily: 'Fira Sans',
+    borderBottom: '1px solid rgb(230, 232, 235)',
+    fontFamily: 'PT Sans',
     display: 'block',
+    cursor: 'hand',
   },
   title: {
     fontWeight: 'bold',
@@ -26,22 +28,30 @@ const styles = StyleSheet.create({
     textOverflow: 'ellipsis',
     height: '14px',
     lineHeight: '14px',
+    color: 'rgb(77, 88, 101)',
   },
   description: {
     fontSize: '13px',
-    height: '13px',
-    lineHeight: '13px',
+    height: '22px',
+    lineHeight: '22px',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
+    color: 'rgb(99, 114, 130)',
   },
   timestamp: {
     marginRight: '5px',
+    fontSize: '10px',
+    background: 'rgb(193, 199, 205)',
+    padding: '2px 3px',
+    color: '#fff',
+    lineHeight: '14px',
+    borderRadius: '2px',
   },
 });
 
 const formatExcerpt = (content, length) => (
-  `${content.slice(0, length)}${content.length > length ? '...' : ''}`
+  content ? `${content.slice(0, length)}${content.length > length ? '...' : ''}` : NEW_NOTE_DEFAULT_EXCERPT
 );
 
 const formatTimestamp = timestamp => (
