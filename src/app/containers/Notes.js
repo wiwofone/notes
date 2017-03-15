@@ -3,8 +3,10 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import moment from 'moment';
+import { MdDelete, MdNoteAdd } from 'react-icons/lib/md';
 import NoteList from '../components/NoteList';
 import NoteEditor from '../components/NoteEditor';
+import Button from '../components/Button';
 import { addNote, updateNote, deleteNote } from '../actions/notes';
 import { NEW_NOTE_TITLE, NEW_NOTE_CONTENT } from '../defaults';
 
@@ -23,14 +25,20 @@ const styles = StyleSheet.create({
   },
   panel: {
     flex: '1 0 0',
-    background: '#eee',
+    background: 'rgb(247, 249, 250)',
     display: 'flex',
     flexDirection: 'column',
     minWidth: '205px',
   },
   editor: {
     flex: '4 0 0',
-    background: '#ddd',
+    background: '#fff',
+    padding: '30px 30px',
+  },
+  toolbar: {
+    padding: '10px',
+    display: 'flex',
+    justifyContent: 'center',
   },
 });
 
@@ -71,18 +79,22 @@ class Notes extends React.Component {
     return (
       <div className={css(styles.container)}>
         <div className={css(styles.panel)}>
-          <div>
-            <button
-              onClick={onAddNote}
+          <div className={css(styles.toolbar)}>
+            <Button
+              style={styles.toolbarButton}
+              onPress={onAddNote}
               disabled={isActiveNoteNew}
-            >
-              {'Add new note'}
-            </button>
+              title={<MdNoteAdd />}
+              color={'rgb(77, 88, 101)'}
+            />
             {
               activeNote &&
-              <button onClick={() => onDeleteNote(activeNote.id)}>
-                {'Delete note'}
-              </button>
+              <Button
+                style={styles.toolbarButton}
+                onPress={() => onDeleteNote(activeNote.id)}
+                title={<MdDelete />}
+                color={'rgb(77, 88, 101)'}
+              />
             }
           </div>
           <NoteList
