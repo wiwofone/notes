@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
   },
   editor: {
     flex: '4 0 0',
+    display: 'flex',
     background: '#fff',
     padding: '30px 30px',
   },
@@ -60,6 +61,10 @@ const redirectToNote = noteId => (
   browserHistory.push(`/${noteId}`)
 );
 
+const isNoteActiveAndNew = note => (
+  note && note.title === NEW_NOTE_TITLE && note.content === NEW_NOTE_CONTENT
+);
+
 class Notes extends React.Component {
   getActiveNote() {
     const activeNote = this.props.notes.find(
@@ -72,9 +77,14 @@ class Notes extends React.Component {
     const { notes, onAddNote, onUpdateNote, onDeleteNote } = this.props;
     const sortedNotes = notes.concat().sort(sortByDate);
     const activeNote = this.getActiveNote();
-    const isActiveNoteNew = activeNote
-                            && activeNote.title === NEW_NOTE_TITLE
-                            && activeNote.content === NEW_NOTE_CONTENT;
+    const isActiveNoteNew = isNoteActiveAndNew(activeNote);
+
+    const redirectToNoteAndDelete = (noteId, prevNote) => {
+      if (isNoteActiveAndNew(prevNote)) {
+        onDeleteNote(prevNote.id);
+      }
+      redirectToNote(noteId);
+    };
 
     return (
       <div className={css(styles.container)}>
@@ -99,7 +109,7 @@ class Notes extends React.Component {
           </div>
           <NoteList
             notes={sortedNotes}
-            onClickNote={redirectToNote}
+            onClickNote={noteId => redirectToNoteAndDelete(noteId, activeNote)}
           />
         </div>
         <div className={css(styles.editor)}>

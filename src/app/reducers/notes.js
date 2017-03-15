@@ -1,5 +1,4 @@
 import { ADD_NOTE, UPDATE_NOTE, DELETE_NOTE } from '../actions/notes';
-import { NEW_NOTE_TITLE, NEW_NOTE_CONTENT } from '../defaults';
 
 const notes = (state = [], action) => {
   switch (action.type) {
@@ -8,8 +7,8 @@ const notes = (state = [], action) => {
         ...state,
         {
           id: action.note.id,
-          title: NEW_NOTE_TITLE,
-          content: NEW_NOTE_CONTENT,
+          title: '',
+          content: '',
           updatedAt: action.note.updatedAt,
         },
       ];

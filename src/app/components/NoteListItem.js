@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
-import { NEW_NOTE_DEFAULT_EXCERPT } from '../defaults';
+import { NEW_NOTE_DEFAULT_TITLE, NEW_NOTE_DEFAULT_EXCERPT } from '../defaults';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -65,7 +65,7 @@ const NoteListItem = ({ title, content, updatedAt, onClick }) => (
       className={css(styles.container)}
     >
       <h1 className={css(styles.title)}>
-        { title }
+        { title || NEW_NOTE_DEFAULT_TITLE }
       </h1>
       <div className={css(styles.description)}>
         <span className={css(styles.timestamp)}>
