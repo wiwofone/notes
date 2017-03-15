@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     outline: 'none',
     fontSize: '32px',
     marginBottom: '16px',
+    color: 'inherit',
   },
   content: {
     border: 0,
@@ -33,6 +34,7 @@ const styles = StyleSheet.create({
     outline: 'none',
     lineHeight: '150%',
     flex: '1',
+    color: 'inherit',
   },
 });
 
@@ -51,6 +53,13 @@ const NoteEditor = ({ note, onContentChange, focusTitle }) => {
     })
   );
 
+  const handleEnterPress = (e) => {
+    if (e.key === 'Enter') {
+      contentEditor.focus();
+      contentEditor.setSelectionRange(0, 0);
+    }
+  };
+
   return (
     <div
       className={css(styles.editor)}
@@ -65,6 +74,7 @@ const NoteEditor = ({ note, onContentChange, focusTitle }) => {
         onChange={handleContentChange}
         ref={(input) => { titleEditor = input; }}
         autoFocus={focusTitle}
+        onKeyPress={handleEnterPress}
       />
       <textarea
         className={css(styles.content)}
