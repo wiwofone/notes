@@ -1,14 +1,14 @@
 {
   "name": "notes",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple notes app to keep JS in shape Edit",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --progress --colors --hot",
     "build": "webpack -p"
   },
-  "author": "",
+  "author": "Shahin Zarrabi",
   "license": "ISC",
   "dependencies": {
     "aphrodite": "^1.0.0",
