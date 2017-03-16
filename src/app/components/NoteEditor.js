@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     fontSize: '32px',
     marginBottom: '16px',
     color: 'inherit',
+    fontFamily: 'inherit',
   },
   content: {
     border: 0,
@@ -35,6 +36,7 @@ const styles = StyleSheet.create({
     lineHeight: '150%',
     flex: '1',
     color: 'inherit',
+    fontFamily: 'inherit',
   },
 });
 

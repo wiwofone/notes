@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
+import Color from 'color';
 
 const propTypes = {
   onPress: PropTypes.func,
@@ -10,12 +11,12 @@ const propTypes = {
 
 const styles = StyleSheet.create({
   button: {
-    background: 'transparent',
+    color: '#fff',
     fontSize: '12px',
     lineHeight: '12px',
     height: '30px',
-    border: '1px solid',
-    borderRadius: '15px',
+    border: '0',
+    borderRadius: '4px',
     outline: 'none',
     cursor: 'hand',
     padding: '0 15px',
@@ -24,14 +25,21 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({ onPress, disabled, title, color = 'rgb(0, 0, 0)' }) => {
+const Button = ({ onPress, disabled, title, color = 'rgb(77, 88, 101)' }) => {
   const customStyles = StyleSheet.create({
     button: {
-      color,
-      borderColor: color,
+      background: color,
 
       ':disabled': {
         opacity: '0.35',
+      },
+
+      ':hover': {
+        background: new Color(color).darken(0.25).rgb().string(),
+      },
+
+      ':active': {
+        background: new Color(color).darken(0.5).rgb().string(),
       },
     },
   });
