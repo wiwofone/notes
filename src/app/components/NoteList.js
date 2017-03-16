@@ -5,6 +5,7 @@ import NoteListItem from './NoteListItem';
 const propTypes = {
   notes: PropTypes.array.isRequired,
   onClickNote: PropTypes.func.isRequired,
+  activeNoteId: PropTypes.number.isRequired,
 };
 
 const styles = StyleSheet.create({
@@ -15,15 +16,19 @@ const styles = StyleSheet.create({
   },
 });
 
-const NoteList = ({ notes, onClickNote }) => (
+const NoteList = ({ notes, onClickNote, activeNoteId }) => (
   <ul className={css(styles.list)}>
-    { notes.map(note => (
-      <NoteListItem
-        key={note.id}
-        onClick={() => onClickNote(note.id)}
-        {...note}
-      />
-    ))}
+    { notes.map((note) => {
+      const isActive = activeNoteId === note.id;
+      return (
+        <NoteListItem
+          key={note.id}
+          onClick={() => onClickNote(note.id)}
+          isActive={isActive}
+          {...note}
+        />
+      );
+    })}
   </ul>
 );
 

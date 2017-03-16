@@ -9,16 +9,26 @@ const propTypes = {
   content: PropTypes.string,
   updatedAt: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  isActive: PropTypes.bool.isRequired,
 };
 
 const styles = StyleSheet.create({
+  li: {
+    borderBottom: '1px solid rgb(230, 232, 235)',
+
+    ':last-child': {
+      borderBottom: '0',
+    },
+  },
   container: {
     background: 'transparent',
     padding: '15px 20px',
-    borderBottom: '1px solid rgb(230, 232, 235)',
     fontFamily: 'PT Sans',
     display: 'block',
     cursor: 'hand',
+  },
+  active: {
+    background: 'rgb(230, 232, 235)',
   },
   title: {
     fontWeight: 'bold',
@@ -26,8 +36,8 @@ const styles = StyleSheet.create({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    height: '14px',
-    lineHeight: '14px',
+    height: '16px',
+    lineHeight: '16px',
     color: 'rgb(77, 88, 101)',
   },
   description: {
@@ -42,11 +52,12 @@ const styles = StyleSheet.create({
   timestamp: {
     marginRight: '5px',
     fontSize: '10px',
-    background: 'rgb(193, 199, 205)',
+    background: 'transparent',
+    border: '1px solid currentColor',
     padding: '2px 3px',
-    color: '#fff',
+    color: 'rgb(143, 117, 152)',
     lineHeight: '14px',
-    borderRadius: '2px',
+    borderRadius: '3px',
   },
 });
 
@@ -58,11 +69,11 @@ const formatTimestamp = timestamp => (
   moment(timestamp).format('YYYY-MM-DD')
 );
 
-const NoteListItem = ({ title, content, updatedAt, onClick }) => (
-  <li>
+const NoteListItem = ({ title, content, updatedAt, onClick, isActive }) => (
+  <li className={css(styles.li)}>
     <Link
       onClick={onClick}
-      className={css(styles.container)}
+      className={isActive ? css(styles.container, styles.active) : css(styles.container)}
     >
       <h1 className={css(styles.title)}>
         { title || NEW_NOTE_DEFAULT_TITLE }

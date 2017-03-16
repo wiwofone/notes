@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     flex: '4 0 0',
     display: 'flex',
     background: '#fff',
-    padding: '30px 30px',
+    padding: '25px 30px',
   },
   toolbar: {
     padding: '10px',
@@ -66,6 +66,13 @@ const isNoteActiveAndNew = note => (
 );
 
 class Notes extends React.Component {
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.notes.length === 0) {
+      this.props.onAddNote();
+    }
+  }
+
   getActiveNote() {
     const activeNote = this.props.notes.find(
       note => note.id === getActiveId(this.props)
@@ -78,9 +85,10 @@ class Notes extends React.Component {
     const sortedNotes = notes.concat().sort(sortByDate);
     const activeNote = this.getActiveNote();
     const isActiveNoteNew = isNoteActiveAndNew(activeNote);
+    const isActiveNoteNewAndOnly = isActiveNoteNew && notes.length === 1;
 
     const redirectToNoteAndDelete = (noteId, prevNote) => {
-      if (isNoteActiveAndNew(prevNote)) {
+      if (isNoteActiveAndNew(prevNote) && (noteId) !== prevNote.id) {
         onDeleteNote(prevNote.id);
       }
       redirectToNote(noteId);
@@ -95,7 +103,7 @@ class Notes extends React.Component {
               onPress={onAddNote}
               disabled={isActiveNoteNew}
               title={<MdNoteAdd />}
-              color={'rgb(77, 88, 101)'}
+              color={'rgb(85, 134, 236)'}
             />
             {
               activeNote &&
@@ -103,13 +111,15 @@ class Notes extends React.Component {
                 style={styles.toolbarButton}
                 onPress={() => onDeleteNote(activeNote.id)}
                 title={<MdDelete />}
-                color={'rgb(77, 88, 101)'}
+                color={'rgb(85, 134, 236)'}
+                disabled={isActiveNoteNewAndOnly}
               />
             }
           </div>
           <NoteList
             notes={sortedNotes}
             onClickNote={noteId => redirectToNoteAndDelete(noteId, activeNote)}
+            activeNoteId={(activeNote && activeNote.id) || 0}
           />
         </div>
         <div className={css(styles.editor)}>
