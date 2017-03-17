@@ -18,15 +18,14 @@ technologies as the project grows (with varying success 😂).
 
 ## Todo
 
+- [ ] If the note was updated today, show the time of the day in NoteListItem
 - [ ] Add a real editor (perhaps MediumEditor?)
 - [ ] Design components (for real)
-- [ ] Authentication (Google OAuth?)
-- [ ] Persist the state in something else than localStorage (after authentication obviously, Firebase maybe?)
+- [ ] Persist strategy. I'm thinking of the user connecting to Dropbox/Drive, where the notes would reside in a file (maybe as the serialized JSON that's currently saved in localStorage).
 - [ ] Testing
-- [ ] Move theme variables (fonts, colors) to separate module
+- [ ] Move theme variables (fonts, colors) to separate module.
 
 ## Tools/technologies/concepts to check out:
-* Server-side rendering
 * Rollup
 * Offline usage
 * Internationalization
