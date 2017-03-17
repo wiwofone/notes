@@ -74,7 +74,7 @@ const NoteListItem = ({ title, content, updatedAt, onClick, isActive }) => (
   <li className={css(styles.li)}>
     <Link
       onClick={onClick}
-      className={isActive ? css(styles.container, styles.active) : css(styles.container)}
+      className={css(styles.container, isActive && styles.active)}
     >
       <h1 className={css(styles.title)}>
         { title || NEW_NOTE_DEFAULT_TITLE }
