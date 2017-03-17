@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
 import { NEW_NOTE_DEFAULT_TITLE, NEW_NOTE_DEFAULT_EXCERPT } from '../defaults';
+import { typography, palette } from '../theme';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -14,7 +15,7 @@ const propTypes = {
 
 const styles = StyleSheet.create({
   li: {
-    borderBottom: '1px solid rgb(230, 232, 235)',
+    borderBottom: `1px solid ${palette.panelHighlight}`,
 
     ':last-child': {
       borderBottom: '0',
@@ -23,12 +24,12 @@ const styles = StyleSheet.create({
   container: {
     background: 'transparent',
     padding: '15px 20px',
-    fontFamily: 'PT Sans',
+    fontFamily: typography.fonts.primary,
     display: 'block',
     cursor: 'hand',
   },
   active: {
-    background: 'rgb(230, 232, 235)',
+    background: palette.panelHighlight,
   },
   title: {
     fontWeight: 'bold',
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     textOverflow: 'ellipsis',
     height: '16px',
     lineHeight: '16px',
-    color: 'rgb(77, 88, 101)',
+    color: palette.text,
   },
   description: {
     fontSize: '13px',
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
-    color: 'rgb(99, 114, 130)',
+    color: palette.legend,
   },
   timestamp: {
     marginRight: '5px',
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
     background: 'transparent',
     border: '1px solid currentColor',
     padding: '2px 3px',
-    color: 'rgb(143, 117, 152)',
+    color: palette.accent,
     lineHeight: '14px',
     borderRadius: '3px',
   },

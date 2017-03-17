@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
+import { typography, palette } from '../theme';
 
 const propTypes = {
   note: PropTypes.object.isRequired,
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
     display: 'flex',
     width: '100%',
     flexDirection: 'column',
-    fontFamily: 'PT Sans',
-    color: 'rgb(77, 88, 101)',
+    fontFamily: typography.fonts.primary,
+    color: palette.text,
   },
   timestamp: {
     display: 'flex',

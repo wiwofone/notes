@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import moment from 'moment';
 import { MdDelete, MdNoteAdd } from 'react-icons/lib/md';
+import { palette } from '../theme';
 import NoteList from '../components/NoteList';
 import NoteEditor from '../components/NoteEditor';
 import Button from '../components/Button';
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
   panel: {
     flex: '1 0 0',
-    background: 'rgb(247, 249, 250)',
+    background: palette.panel,
     display: 'flex',
     flexDirection: 'column',
     minWidth: '205px',
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
   editor: {
     flex: '4 0 0',
     display: 'flex',
-    background: '#fff',
+    background: palette.editor,
     padding: '25px 30px',
   },
   toolbar: {
@@ -103,7 +104,6 @@ class Notes extends React.Component {
               onPress={onAddNote}
               disabled={isActiveNoteNew}
               title={<MdNoteAdd />}
-              color={'rgb(85, 134, 236)'}
             />
             {
               activeNote &&
@@ -111,7 +111,6 @@ class Notes extends React.Component {
                 style={styles.toolbarButton}
                 onPress={() => onDeleteNote(activeNote.id)}
                 title={<MdDelete />}
-                color={'rgb(85, 134, 236)'}
                 disabled={isActiveNoteNewAndOnly}
               />
             }

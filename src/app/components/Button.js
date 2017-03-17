@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import Color from 'color';
+import { palette } from '../theme';
 
 const propTypes = {
   onPress: PropTypes.func,
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({ onPress, disabled, title, color = 'rgb(77, 88, 101)' }) => {
+const Button = ({ onPress, disabled, title, color = palette.primary }) => {
   const customStyles = StyleSheet.create({
     button: {
       background: color,
