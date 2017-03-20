@@ -32,6 +32,7 @@ const styles = StyleSheet.create({
     color: 'inherit',
     fontFamily: 'inherit',
     padding: '0',
+    fontWeight: 'bold',
   },
   content: {
     border: 0,

@@ -8,12 +8,12 @@ const propTypes = {
   disabled: PropTypes.bool,
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   color: PropTypes.string,
+  invert: PropTypes.bool,
 };
 
 const styles = StyleSheet.create({
   button: {
-    color: '#fff',
-    fontSize: '12px',
+    fontSize: '14px',
     lineHeight: '12px',
     height: '30px',
     border: '0',
@@ -26,21 +26,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const Button = ({ onPress, disabled, title, color = palette.primary }) => {
+const Button = ({ onPress, disabled, title, color = palette.primary, invert }) => {
   const customStyles = StyleSheet.create({
     button: {
-      background: color,
+      color: invert ? color : '#fff',
+      background: invert ? 'transparent' : color,
 
       ':disabled': {
         opacity: '0.35',
       },
 
       ':hover': {
-        background: new Color(color).darken(0.25).rgb().string(),
+        background: new Color(invert ? '#fff' : color).darken(0.1).rgb().string(),
       },
 
       ':active': {
-        background: new Color(color).darken(0.5).rgb().string(),
+        background: new Color(invert ? '#fff' : color).darken(0.2).rgb().string(),
       },
     },
   });

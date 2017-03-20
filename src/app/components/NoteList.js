@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
   list: {
     background: 'transparent',
     flex: '1',
-    overflowX: 'scroll',
+    'overflow-y': 'auto',
+    'overflow-x': 'hidden',
   },
 });
 

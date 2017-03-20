@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
     marginRight: '5px',
     fontSize: '10px',
     background: 'transparent',
-    border: '1px solid currentColor',
-    padding: '2px 3px',
     color: palette.primary,
-    lineHeight: '14px',
-    borderRadius: '3px',
+    lineHeight: '22px',
+    height: '22px',
+    fontWeight: 'bold',
+    display: 'inline-block',
   },
 });
 
@@ -66,9 +66,11 @@ const formatExcerpt = (excerpt, length) => (
   excerpt ? `${excerpt.slice(0, length)}${excerpt.length > length ? '...' : ''}` : NEW_NOTE_DEFAULT_EXCERPT
 );
 
-const formatTimestamp = timestamp => (
-  moment(timestamp).format('YYYY-MM-DD')
-);
+const formatTimestamp = (timestamp) => {
+  const momentTimestamp = moment(timestamp);
+  return moment().diff(momentTimestamp, 'days') > 0 ? momentTimestamp.format('YYYY-MM-DD') : momentTimestamp.format('HH:mm');
+};
+
 
 const NoteListItem = ({ title, excerpt, updatedAt, onClick, isActive }) => (
   <li className={css(styles.li)}>
