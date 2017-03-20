@@ -8,7 +8,6 @@ const notes = (state = [], action) => {
         {
           id: action.note.id,
           title: '',
-          content: '',
           updatedAt: action.note.updatedAt,
         },
       ];

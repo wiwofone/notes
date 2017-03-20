@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
+import DraftEditor from './DraftEditor';
 import { typography, palette } from '../theme';
 
 const propTypes = {
@@ -21,14 +22,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     fontSize: '12px',
+    color: palette.textSecondary,
   },
   title: {
     border: 0,
     outline: 'none',
     fontSize: '32px',
-    marginBottom: '16px',
+    margin: '8px 0',
     color: 'inherit',
     fontFamily: 'inherit',
+    padding: '0',
   },
   content: {
     border: 0,
@@ -38,6 +41,7 @@ const styles = StyleSheet.create({
     flex: '1',
     color: 'inherit',
     fontFamily: 'inherit',
+    padding: '0',
   },
 });
 
@@ -47,10 +51,9 @@ const NoteEditor = ({ note, onContentChange, focusTitle }) => {
 
   const updatedAt = moment(note.updatedAt).format('D MMMM YYYY [at] HH:mm');
 
-  const handleContentChange = () => (
+  const handleTitleChange = () => (
     onContentChange({
       id: note.id,
-      content: contentEditor.value,
       title: titleEditor.value,
       updatedAt: moment().format(),
     })
@@ -59,9 +62,17 @@ const NoteEditor = ({ note, onContentChange, focusTitle }) => {
   const handleEnterPress = (e) => {
     if (e.key === 'Enter') {
       contentEditor.focus();
-      contentEditor.setSelectionRange(0, 0);
     }
   };
+
+  const handleContentChange = (content, excerpt) => (
+    onContentChange({
+      id: note.id,
+      content,
+      excerpt,
+      updatedAt: moment().format(),
+    })
+  );
 
   return (
     <div
@@ -74,16 +85,15 @@ const NoteEditor = ({ note, onContentChange, focusTitle }) => {
       <input
         className={css(styles.title)}
         defaultValue={note.title}
-        onChange={handleContentChange}
+        onChange={handleTitleChange}
         ref={(input) => { titleEditor = input; }}
         autoFocus={focusTitle}
         onKeyPress={handleEnterPress}
       />
-      <textarea
-        className={css(styles.content)}
-        defaultValue={note.content}
+      <DraftEditor
         onChange={handleContentChange}
-        ref={(textarea) => { contentEditor = textarea; }}
+        defaultValue={note.content}
+        ref={(draftEditor) => { contentEditor = draftEditor; }}
       />
     </div>
   );

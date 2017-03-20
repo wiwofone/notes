@@ -27,6 +27,10 @@ var config = {
         test: /\.jsx?/,
         include: APP_DIR,
         loaders: ['react-hot-loader/webpack', 'babel']
+      },
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', 'css-loader'] 
       }
     ]
   }

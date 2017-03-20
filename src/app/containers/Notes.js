@@ -3,13 +3,11 @@ import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import moment from 'moment';
-import { MdDelete, MdNoteAdd } from 'react-icons/lib/md';
 import { palette } from '../theme';
 import NoteList from '../components/NoteList';
 import NoteEditor from '../components/NoteEditor';
 import Button from '../components/Button';
 import { addNote, updateNote, deleteNote } from '../actions/notes';
-import { NEW_NOTE_TITLE, NEW_NOTE_CONTENT } from '../defaults';
 
 const propTypes = {
   onAddNote: PropTypes.func.isRequired,
@@ -63,7 +61,7 @@ const redirectToNote = noteId => (
 );
 
 const isNoteActiveAndNew = note => (
-  note && note.title === NEW_NOTE_TITLE && note.content === NEW_NOTE_CONTENT
+  note && (!note.title && !note.content)
 );
 
 class Notes extends React.Component {
@@ -98,28 +96,30 @@ class Notes extends React.Component {
     return (
       <div className={css(styles.container)}>
         <div className={css(styles.panel)}>
+          <NoteList
+            notes={sortedNotes}
+            onClickNote={noteId => redirectToNoteAndDelete(noteId, activeNote)}
+            activeNoteId={(activeNote && activeNote.id) || 0}
+          />
           <div className={css(styles.toolbar)}>
             <Button
               style={styles.toolbarButton}
               onPress={onAddNote}
               disabled={isActiveNoteNew}
-              title={<MdNoteAdd />}
+              title={'Add note'}
+              invert
             />
             {
               activeNote &&
               <Button
                 style={styles.toolbarButton}
                 onPress={() => onDeleteNote(activeNote.id)}
-                title={<MdDelete />}
+                title={'Remove note'}
                 disabled={isActiveNoteNewAndOnly}
+                invert
               />
             }
           </div>
-          <NoteList
-            notes={sortedNotes}
-            onClickNote={noteId => redirectToNoteAndDelete(noteId, activeNote)}
-            activeNoteId={(activeNote && activeNote.id) || 0}
-          />
         </div>
         <div className={css(styles.editor)}>
           { activeNote &&

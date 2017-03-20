@@ -7,7 +7,7 @@ import { typography, palette } from '../theme';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
-  content: PropTypes.string,
+  excerpt: PropTypes.string,
   updatedAt: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
   isActive: PropTypes.bool.isRequired,
@@ -56,21 +56,21 @@ const styles = StyleSheet.create({
     background: 'transparent',
     border: '1px solid currentColor',
     padding: '2px 3px',
-    color: palette.accent,
+    color: palette.primary,
     lineHeight: '14px',
     borderRadius: '3px',
   },
 });
 
-const formatExcerpt = (content, length) => (
-  content ? `${content.slice(0, length)}${content.length > length ? '...' : ''}` : NEW_NOTE_DEFAULT_EXCERPT
+const formatExcerpt = (excerpt, length) => (
+  excerpt ? `${excerpt.slice(0, length)}${excerpt.length > length ? '...' : ''}` : NEW_NOTE_DEFAULT_EXCERPT
 );
 
 const formatTimestamp = timestamp => (
   moment(timestamp).format('YYYY-MM-DD')
 );
 
-const NoteListItem = ({ title, content, updatedAt, onClick, isActive }) => (
+const NoteListItem = ({ title, excerpt, updatedAt, onClick, isActive }) => (
   <li className={css(styles.li)}>
     <Link
       onClick={onClick}
@@ -83,7 +83,7 @@ const NoteListItem = ({ title, content, updatedAt, onClick, isActive }) => (
         <span className={css(styles.timestamp)}>
           { formatTimestamp(updatedAt) }
         </span>
-        { formatExcerpt(content, 100) }
+        { formatExcerpt(excerpt, 100) }
       </div>
     </Link>
   </li>
