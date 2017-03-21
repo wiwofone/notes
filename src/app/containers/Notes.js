@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite';
 import moment from 'moment';
 import { palette } from '../theme';
-import NoteList from '../components/NoteList';
-import NoteEditor from '../components/NoteEditor';
-import Button from '../components/Button';
+import NoteList from '../components/Note/NoteList';
+import NoteEditor from '../components/Note/NoteEditor';
+import Button from '../components/UI/Button';
 import { addNote, updateNote, deleteNote } from '../actions/notes';
 
 const propTypes = {
@@ -114,7 +114,7 @@ class Notes extends React.Component {
               <Button
                 style={styles.toolbarButton}
                 onPress={() => onDeleteNote(activeNote.id)}
-                title={'Remove note'}
+                title={'Delete note'}
                 disabled={isActiveNoteNewAndOnly}
                 invert
               />

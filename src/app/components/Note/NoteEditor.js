@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
-import DraftEditor from '../editor/DraftEditor';
+import Editor from '../Editor/Editor';
 import { typography, palette } from '../../theme';
 
 const propTypes = {
@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     fontFamily: typography.fonts.primary,
     color: palette.text,
+    'overflow-y': 'auto',
+    'overflow-x': 'hidden',
+    flex: '1',
   },
   timestamp: {
     display: 'flex',
@@ -33,16 +36,6 @@ const styles = StyleSheet.create({
     fontFamily: 'inherit',
     padding: '0',
     fontWeight: 'bold',
-  },
-  content: {
-    border: 0,
-    fontSize: '16px',
-    outline: 'none',
-    lineHeight: '150%',
-    flex: '1',
-    color: 'inherit',
-    fontFamily: 'inherit',
-    padding: '0',
   },
 });
 
@@ -91,7 +84,7 @@ const NoteEditor = ({ note, onContentChange, focusTitle }) => {
         autoFocus={focusTitle}
         onKeyPress={handleEnterPress}
       />
-      <DraftEditor
+      <Editor
         onChange={handleContentChange}
         defaultValue={note.content}
         ref={(draftEditor) => { contentEditor = draftEditor; }}
