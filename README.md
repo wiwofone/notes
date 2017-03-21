@@ -18,15 +18,16 @@ technologies as the project grows (with varying success 😂).
 
 ## Todo
 
+- [ ] Load reset.css with Webpack in index.js
 - [ ] Search functionality
 - [ ] Select many
 - [ ] (One-dimensional) folder structure or (hash)tags
 - [ ] Add a real editor (perhaps MediumEditor?)
-- [ ] Design components (for real)
 - [ ] Persist strategy. I'm thinking of the user connecting to Dropbox/Drive, where the notes would reside in a file (maybe as the serialized JSON that's currently saved in localStorage)
 - [ ] Testing
 - [ ] Move theme dependencies from dumb components to a provider
 - [ ] Separate presentational parts of Notes.js to a dumb component (and use this pattern for all "pages")
+- [x] Design components (for real)
 - [x] If the note was updated today, show the time of the day in NoteListItem
 
 ## Tools/technologies/concepts to check out:
