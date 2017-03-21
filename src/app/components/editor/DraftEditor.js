@@ -1,16 +1,10 @@
 import React, { PropTypes } from 'react';
-import Editor from 'draft-js-plugins-editor';
-import { EditorState, convertToRaw, convertFromRaw } from 'draft-js';
-import createMarkdownShortcutsPlugin from 'draft-js-markdown-shortcuts-plugin';
+import { Editor, EditorState, convertToRaw, convertFromRaw } from 'draft-js';
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
   defaultValue: PropTypes.object,
 };
-
-const plugins = [
-  createMarkdownShortcutsPlugin(),
-];
 
 class DraftEditor extends React.Component {
   constructor(props) {
@@ -50,7 +44,6 @@ class DraftEditor extends React.Component {
         editorState={editorState}
         onChange={this.onChange}
         ref={(editor) => { this.editor = editor; }}
-        plugins={plugins}
       />
     );
   }
