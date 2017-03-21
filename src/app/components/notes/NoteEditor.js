@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
-import DraftEditor from './DraftEditor';
-import { typography, palette } from '../theme';
+import DraftEditor from '../editor/DraftEditor';
+import { typography, palette } from '../../theme';
 
 const propTypes = {
   note: PropTypes.object.isRequired,

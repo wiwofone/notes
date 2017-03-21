@@ -2,8 +2,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import moment from 'moment';
 import { StyleSheet, css } from 'aphrodite';
-import { NEW_NOTE_DEFAULT_TITLE, NEW_NOTE_DEFAULT_EXCERPT } from '../defaults';
-import { typography, palette } from '../theme';
+import { NEW_NOTE_DEFAULT_TITLE, NEW_NOTE_DEFAULT_EXCERPT } from '../../defaults';
+import { typography, palette } from '../../theme';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -68,7 +68,7 @@ const formatExcerpt = (excerpt, length) => (
 
 const formatTimestamp = (timestamp) => {
   const momentTimestamp = moment(timestamp);
-  return moment().diff(momentTimestamp, 'days') > 0 ? momentTimestamp.format('YYYY-MM-DD') : momentTimestamp.format('HH:mm');
+  return moment().diff(momentTimestamp.clone().startOf('day'), 'days') > 0 ? momentTimestamp.format('YYYY-MM-DD') : momentTimestamp.format('HH:mm');
 };
 
 

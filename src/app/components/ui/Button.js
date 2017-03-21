@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import Color from 'color';
-import { palette } from '../theme';
+import { palette } from '../../theme';
 
 const propTypes = {
   onPress: PropTypes.func,
