@@ -18,6 +18,9 @@ technologies as the project grows (with varying success 😂).
 
 ## Todo
 
+- [ ] Search functionality
+- [ ] Select many
+- [ ] (One-dimensional) folder structure or (hash)tags
 - [ ] Add a real editor (perhaps MediumEditor?)
 - [ ] Design components (for real)
 - [ ] Persist strategy. I'm thinking of the user connecting to Dropbox/Drive, where the notes would reside in a file (maybe as the serialized JSON that's currently saved in localStorage)
